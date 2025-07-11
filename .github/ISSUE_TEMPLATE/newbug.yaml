@@ -2,9 +2,9 @@ name: Bug Report
 description: File a bug report.
 title: "[Bug]: "
 labels: ["bug", "triage"]
-projects: ["allangood/rtlmr2mqtt"]
+projects: ["natekspencer/rtlmr2mqtt"]
 assignees:
-  - allangood
+  - natekspencer
 body:
   - type: markdown
     attributes:

@@ -1,10 +1,10 @@
 ### RTLAMR2MQTT
 
-![Docker Pulls](https://img.shields.io/docker/pulls/allangood/rtlamr2mqtt)
-[![GitHub license](https://img.shields.io/github/license/allangood/rtlamr2mqtt)](https://github.com/allangood/rtlamr2mqtt/blob/main/LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/allangood/rtlamr2mqtt)](https://github.com/allangood/rtlamr2mqtt/stargazers)
-![GitHub contributors](https://img.shields.io/github/contributors/allangood/rtlamr2mqtt)
-[![GitHub issues](https://img.shields.io/github/issues/allangood/rtlamr2mqtt)](https://github.com/allangood/rtlamr2mqtt/issues)
+![Docker Pulls](https://img.shields.io/docker/pulls/natekspencer/rtlamr2mqtt)
+[![GitHub license](https://img.shields.io/github/license/natekspencer/rtlamr2mqtt)](https://github.com/natekspencer/rtlamr2mqtt/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/natekspencer/rtlamr2mqtt)](https://github.com/natekspencer/rtlamr2mqtt/stargazers)
+![GitHub contributors](https://img.shields.io/github/contributors/natekspencer/rtlamr2mqtt)
+[![GitHub issues](https://img.shields.io/github/issues/natekspencer/rtlamr2mqtt)](https://github.com/natekspencer/rtlamr2mqtt/issues)
 
 [![Open your Home Assistant instance and show the add add-on repository dialog with a specific repository URL pre-filled.](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fallangood%2Frtlamr2mqtt)
 
@@ -33,8 +33,7 @@ RTLAMR2MQTT is a small Python program to read your utility meter such as water, 
 
 ### Changes
 
-> [!CAUTION]
-> **Major code rewrite** \
+> [!CAUTION] > **Major code rewrite** \
 > After a long break without working on this project, I am back with a major rewrite. \
 > The old code was too hard to maintain. \
 > Your old entities should be cleaned manually from your MQTT broker
@@ -42,7 +41,6 @@ RTLAMR2MQTT is a small Python program to read your utility meter such as water, 
 > [!CAUTION]
 > This new version does **not** have the LISTEN MODE!!! \
 > It is planned, but not implemented yet.
-
 
 # Readme starts here
 
@@ -77,7 +75,7 @@ Manually:
 - Navigate to your Add-Ons (Configuration > Add-ons, Backups, & Supervisor)
 - Click the Add-On Store button
 - Navigate to Repositories (3 dots in the top-right corner > Repositories)
-- Add this repository (https://github.com/allangood/rtlamr2mqtt) and click 'Add'
+- Add this repository (https://github.com/natekspencer/rtlamr2mqtt) and click 'Add'
 - You should now see the 'rtlamr' Add-On at the bottom of your Add-On Store. Click to install and configure.
 
 #### Docker or Docker-Compose
@@ -93,7 +91,7 @@ docker run --name rtlamr2mqtt \
   -v /opt/rtlamr2mqtt/rtlamr2mqtt.yaml:/etc/rtlamr2mqtt.yaml \
   --device /dev/bus/usb:/dev/bus/usb \
   --restart unless-stopped \
-  allangood/rtlamr2mqtt
+  natekspencer/rtlamr2mqtt
 ```
 
 #### Run with docker-compose
@@ -105,7 +103,7 @@ version: "3"
 services:
   rtlamr:
     container_name: rtlamr2mqtt
-    image: allangood/rtlamr2mqtt
+    image: natekspencer/rtlamr2mqtt
     restart: unless-stopped
     devices:
       - /dev/bus/usb
@@ -152,7 +150,7 @@ This is a planned feature...
 
 ### Thanks to
 
-A big thank you to all kind [contributions](https://github.com/allangood/rtlamr2mqtt/graphs/contributors)!
+A big thank you to all kind [contributions](https://github.com/natekspencer/rtlamr2mqtt/graphs/contributors)!
 
 ### Credits to:
 

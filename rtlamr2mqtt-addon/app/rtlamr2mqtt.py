@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 rtlamr2mqtt - A Home Assistant add-on for RTLAMR
-https://github.com/allangood/rtlamr2mqtt/blob/main/LICENSE
+https://github.com/natekspencer/rtlamr2mqtt/blob/main/LICENSE
 
 This add-on uses the code from:
 - https://github.com/bemasher/rtlamr

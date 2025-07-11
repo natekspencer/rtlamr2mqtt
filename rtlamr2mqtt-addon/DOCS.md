@@ -159,6 +159,6 @@ meters:
 
 Got questions?
 
-- Repository: https://github.com/allangood/rtlamr2mqtt
-- Report issues here: https://github.com/allangood/rtlamr2mqtt/issues
-- Questions: https://github.com/allangood/rtlamr2mqtt/discussions
+- Repository: https://github.com/natekspencer/rtlamr2mqtt
+- Report issues here: https://github.com/natekspencer/rtlamr2mqtt/issues
+- Questions: https://github.com/natekspencer/rtlamr2mqtt/discussions
