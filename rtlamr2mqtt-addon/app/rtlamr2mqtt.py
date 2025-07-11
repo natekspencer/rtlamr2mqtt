@@ -448,8 +448,8 @@ def main():
                 if reading['meter_id'] not in read_counter:
                     read_counter.append(reading['meter_id'])
 
-                if config['meters'][reading['meter_id']]['format'] is not None:
-                    r = ro.format_number(reading['consumption'], config['meters'][reading['meter_id']]['format'])
+                if (meter_format := config.get('meters', {}).get(reading.get('meter_id'), {}).get('format')):
+                    r = ro.format_number(reading['consumption'], meter_format)
                 else:
                     r = reading['consumption']
 
