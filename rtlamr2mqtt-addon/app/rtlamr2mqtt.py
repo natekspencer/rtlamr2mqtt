@@ -301,6 +301,7 @@ def main():
             meter_config = {
                 "name": f"Meter {meter_id}",
                 "id": meter_id,
+                "state_class": "total_increasing",
                 # Optional: add 'device_class', 'unit_of_measurement', etc.
             }
 
