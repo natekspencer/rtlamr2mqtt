@@ -252,7 +252,7 @@ def main():
     # res = list((sub for sub in config['meters'] if config['meters'][sub]['name'][-7:] == "_FINDME"))
 
     # Get a list of meters ids to watch
-    meter_ids_list = list(config['meters'].keys())
+    meter_ids_list = set(config['meters'].keys())
 
     # Create MQTT Client and connect to the broker
     mqtt_client = m.MQTTClient(
