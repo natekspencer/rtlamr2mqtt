@@ -11,8 +11,7 @@ def meter_discover_payload(base_topic, meter_config):
 
     if 'id' in meter_config:
         meter_id = meter_config['id']
-        meter_name = meter_config.get('name', 'Unknown Meter')
-        meter_config['name']
+        meter_name = meter_config.get('name', f"Meter {meter_id}")
 
     template_payload = {
         "device": {

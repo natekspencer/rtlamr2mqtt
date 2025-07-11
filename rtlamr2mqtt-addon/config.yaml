@@ -60,8 +60,8 @@ schema:
     rtlamr: "str?"
   meters:
     - id: int
-      protocol: list(idm|netidm|r900|r900bcd|scm|scm+)
-      name: "str"
+      protocol: list(idm|netidm|r900|r900bcd|scm|scm+)?
+      name: "str?"
       decimals: int?
       format: "str?"
       unit_of_measurement: "str?"
