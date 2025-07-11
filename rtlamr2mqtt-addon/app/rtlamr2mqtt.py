@@ -471,8 +471,8 @@ def main():
                 )
 
                 # Publish the meter attributes to MQTT
-                # Add the meter protocol to the list of attributes
-                reading['message']['protocol'] = config['meters'][reading['meter_id']]['protocol']
+                # # Add the meter protocol to the list of attributes
+                # reading['message']['protocol'] = config['meters'][reading['meter_id']]['protocol']
                 mqtt_client.publish(
                     topic=f'{config["mqtt"]["base_topic"]}/{reading["meter_id"]}/attributes',
                     payload=dumps(reading['message']),

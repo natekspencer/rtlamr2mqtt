@@ -48,6 +48,7 @@ def get_message(rtlamr_output):
     json_output = read_rtlamr_output(rtlamr_output)
     if json_output is not None and 'Message' in json_output:
         message = json_output['Message']
+        message['protocol'] = json_output.get('Type')
 
         meter_id_key = list_intersection(message, ['EndpointID', 'ID', 'ERTSerialNumber'])
         consumption_key = list_intersection(message, ['Consumption', 'LastConsumption', 'LastConsumptionCount'])
@@ -72,6 +73,7 @@ def get_message_for_ids(rtlamr_output, meter_ids_list):
     json_output = read_rtlamr_output(rtlamr_output)
     if json_output is not None and 'Message' in json_output:
         message = json_output['Message']
+        message['protocol'] = json_output.get('Type')
         meter_id_key = list_intersection(message, ['EndpointID', 'ID', 'ERTSerialNumber'])
         if meter_id_key is not None:
             meter_id = str(message[meter_id_key])
