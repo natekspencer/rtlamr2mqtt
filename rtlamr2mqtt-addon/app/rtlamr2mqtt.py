@@ -409,7 +409,12 @@ def main():
                 keep_reading = False
                 break
 
-            logger.debug('Received rtlamr message: %s', rtlamr_output)
+            if rtlamr_output:
+                logger.debug('Received rtlamr message: %s', rtlamr_output)
+                reading = ro.get_message(rtlamr_output)
+
+                if reading:
+                    logger.debug('Received reading: %s', reading)
 
             # Search for ID in the output
             reading = ro.get_message_for_ids(

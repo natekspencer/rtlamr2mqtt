@@ -40,7 +40,29 @@ def read_rtlamr_output(output):
     if is_json(output):
         return loads(output)
 
+def get_message(rtlamr_output):
+    """
+    Extract the first meter reading from the rtlamr output.
+    Automatically identifies the meter ID and consumption fields.
+    """
+    json_output = read_rtlamr_output(rtlamr_output)
+    if json_output is not None and 'Message' in json_output:
+        message = json_output['Message']
 
+        meter_id_key = list_intersection(message, ['EndpointID', 'ID', 'ERTSerialNumber'])
+        consumption_key = list_intersection(message, ['Consumption', 'LastConsumption', 'LastConsumptionCount'])
+
+        if meter_id_key is not None and consumption_key is not None:
+            meter_id = str(message.pop(meter_id_key))
+            consumption = int(message.pop(consumption_key))
+
+            return {
+                'meter_id': meter_id,
+                'consumption': consumption,
+                'message': message
+            }
+
+    return None
 
 def get_message_for_ids(rtlamr_output, meter_ids_list):
     """
