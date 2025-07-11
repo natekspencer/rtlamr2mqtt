@@ -115,6 +115,7 @@ def load_config(config_path=None):
         'id',
         'protocol',
         'name',
+        'decimals',
         'format',
         'unit_of_measurement',
         'icon',

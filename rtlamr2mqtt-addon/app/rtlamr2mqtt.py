@@ -448,10 +448,11 @@ def main():
                 if reading['meter_id'] not in read_counter:
                     read_counter.append(reading['meter_id'])
 
-                if (meter_format := config.get('meters', {}).get(reading.get('meter_id'), {}).get('format')):
-                    r = ro.format_number(reading['consumption'], meter_format)
-                else:
-                    r = reading['consumption']
+                consumption = reading['consumption']
+                if (decimals := config.get('meters', {}).get(reading.get('meter_id'), {}).get('decimals')):
+                    consumption = ro.format_number_with_decimals(consumption, decimals)
+                elif (meter_format := config.get('meters', {}).get(reading.get('meter_id'), {}).get('format')):
+                    consumption = ro.format_number(consumption, meter_format)
 
                 # Publish the reading to MQTT
                 # First, make sure the status is set to online
@@ -462,7 +463,7 @@ def main():
                     retain=False
                 )
                 # Then, send the reading
-                payload = { 'reading': r, 'lastseen': get_iso8601_timestamp() }
+                payload = { 'reading': consumption, 'lastseen': get_iso8601_timestamp() }
                 mqtt_client.publish(
                     topic=f'{config["mqtt"]["base_topic"]}/{reading["meter_id"]}/state',
                     payload=dumps(payload),

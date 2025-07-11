@@ -19,6 +19,19 @@ def format_number(number, f):
     """
     return str(f.replace('#', '{}').format(*str(number).zfill(f.count('#'))))
 
+def format_number_with_decimals(number: int, decimals: int) -> str:
+    """
+    Converts an integer to a decimal string with the given number of decimal places.
+    E.g., 12345 with decimals=2 becomes "123.45"
+    """
+    if decimals == 0:
+        return str(number)
+    num_str = str(abs(number)).zfill(decimals + 1)
+    int_part = num_str[:-decimals] or '0'
+    dec_part = num_str[-decimals:]
+    sign = '-' if number < 0 else ''
+    return f"{sign}{int_part}.{dec_part}"
+
 
 
 def is_json(test_string):
