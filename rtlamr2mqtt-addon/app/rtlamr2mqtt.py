@@ -292,6 +292,26 @@ def main():
     # Start the MQTT client loop
     mqtt_client.loop_start()
 
+
+    def publish_discovery_if_new(meter_id):
+        if meter_id not in meter_ids_list:
+            print(f"Discovered new meter: {meter_id}")
+            meter_ids_list.add(meter_id)
+
+            meter_config = {
+                "name": f"Meter {meter_id}",
+                "id": meter_id,
+                # Optional: add 'device_class', 'unit_of_measurement', etc.
+            }
+
+            discovery_payload = ha_msgs.meter_discover_payload(config["mqtt"]["base_topic"], meter_config)
+            mqtt_client.publish(
+                topic=f'{config["mqtt"]["ha_autodiscovery_topic"]}/device/{meter_id}/config',
+                payload=dumps(discovery_payload),
+                qos=1,
+                retain=False
+            )
+
     # Publish the discovery messages for all meters
     for meter in config['meters']:
         discovery_payload = ha_msgs.meter_discover_payload(config["mqtt"]["base_topic"], config['meters'][meter])
@@ -415,6 +435,7 @@ def main():
 
                 if reading:
                     logger.debug('Received reading: %s', reading)
+                    publish_discovery_if_new(reading['meter_id'])
 
             # Search for ID in the output
             reading = ro.get_message_for_ids(
