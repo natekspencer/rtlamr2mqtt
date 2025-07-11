@@ -54,7 +54,8 @@ def build_rtlamr_args(config):
     msgtypes = get_comma_separated_str('protocol', meters)
     msgtype_arg = [ f'-msgtype={msgtypes}' ]
 
-    return list(set(default_args + rtltcp_host + custom_parameters + filterid_arg + msgtype_arg))
+    # return list(set(default_args + rtltcp_host + custom_parameters + filterid_arg + msgtype_arg))
+    return list(set(default_args + rtltcp_host + custom_parameters))
 
 def build_rtltcp_args(config):
     """
