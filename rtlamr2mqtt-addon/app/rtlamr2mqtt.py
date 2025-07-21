@@ -295,7 +295,7 @@ def main():
 
     def publish_discovery_if_new(meter_id):
         if meter_id not in meter_ids_list:
-            print(f"Discovered new meter: {meter_id}")
+            logger.debug("Discovered new meter: %s", meter_id)
             meter_ids_list.add(meter_id)
 
             meter_config = {
