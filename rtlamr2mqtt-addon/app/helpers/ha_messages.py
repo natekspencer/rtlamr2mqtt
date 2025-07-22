@@ -8,9 +8,8 @@ def meter_discover_payload(base_topic, meter_config):
     """
     Returns the discovery payload for Home Assistant.
     """
-    if 'id' in meter_config:
-        meter_id = meter_config['id']
-        meter_name = meter_config.get('name', f"Meter {meter_id}")
+    meter_id = meter_config.pop('id')
+    meter_name = meter_config.pop('name', f"Meter {meter_id}")
 
     template_payload = {
         "device": {
@@ -37,7 +36,7 @@ def meter_discover_payload(base_topic, meter_config):
             },
             f"{meter_id}_lastseen": {
                 "platform": "sensor",
-                "name": "Last Seen",
+                "name": "Last seen",
                 "device_class": "timestamp",
                 "value_template":"{{ value_json.lastseen }}",
                 "unique_id": f"{meter_id}_lastseen"
