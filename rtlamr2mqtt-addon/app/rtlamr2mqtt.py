@@ -312,6 +312,7 @@ def main():
                 qos=1,
                 retain=False
             )
+            sleep(1) # sleep to allow discovery to process
 
     # Publish the discovery messages for all meters
     for meter in config['meters']:

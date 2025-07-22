@@ -8,7 +8,6 @@ def meter_discover_payload(base_topic, meter_config):
     """
     Returns the discovery payload for Home Assistant.
     """
-
     if 'id' in meter_config:
         meter_id = meter_config['id']
         meter_name = meter_config.get('name', f"Meter {meter_id}")
